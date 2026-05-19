@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/theme/app_pallete.dart';
+import 'package:flutter_application_1/features/auth/repositories/auth_remote_repository.dart';
+import 'package:flutter_application_1/features/auth/view/pages/login_page.dart';
 import 'package:flutter_application_1/features/auth/view/widgets/auth_gradient_button.dart';
 import 'package:flutter_application_1/features/auth/view/widgets/custom_filed.dart';
+import 'package:fpdart/fpdart.dart' hide State;
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -58,21 +61,46 @@ class _SignupPageState extends State<SignupPage> {
                 isPassword: true,
               ),
               SizedBox(height: 15),
-              AuthGradientButton(buttonText: "Sign Up", onPressed: () {}),
+              AuthGradientButton(
+                buttonText: "Sign Up",
+                onPressed: () async {
+                  final res = await AuthRemoteRepository().signup(
+                    name: nameController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+
+                  switch (res) {
+                    case Left(value: final failure):
+                      print(failure.message);
+
+                    case Right(value: final user):
+                      print(user.email);
+                  }
+                },
+              ),
               SizedBox(height: 15),
-              RichText(
-                text: TextSpan(
-                  text: "Already have an account? ",
-                  style: TextStyle(color: Pallete.subtitleText),
-                  children: [
-                    TextSpan(
-                      text: "Login",
-                      style: TextStyle(
-                        color: Pallete.gradient2,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LogInPage()),
+                  );
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text: "Already have an account? ",
+                    style: TextStyle(color: Pallete.subtitleText),
+                    children: [
+                      TextSpan(
+                        text: "Login",
+                        style: TextStyle(
+                          color: Pallete.gradient2,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

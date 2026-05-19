@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/theme/app_pallete.dart';
+import 'package:flutter_application_1/features/auth/repositories/auth_remote_repository.dart';
+import 'package:flutter_application_1/features/auth/view/pages/signup_page.dart';
 import 'package:flutter_application_1/features/auth/view/widgets/auth_gradient_button.dart';
 import 'package:flutter_application_1/features/auth/view/widgets/custom_filed.dart';
+import 'package:fpdart/fpdart.dart' hide State;
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
@@ -50,21 +53,42 @@ class _LogInPageState extends State<LogInPage> {
                 isPassword: true,
               ),
               SizedBox(height: 15),
-              AuthGradientButton(buttonText: "Log In", onPressed: () {}),
+              AuthGradientButton(
+                buttonText: "Log In",
+                onPressed: () async {
+                  final res = await AuthRemoteRepository().login(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+                  final val = switch (res) {
+                    Left(value: final l) => l.message,
+                    Right(value: final r) => r,
+                  };
+                  print(val);
+                },
+              ),
               SizedBox(height: 15),
-              RichText(
-                text: TextSpan(
-                  text: "Don't have an account? ",
-                  style: TextStyle(color: Pallete.subtitleText),
-                  children: [
-                    TextSpan(
-                      text: "Sign Up",
-                      style: TextStyle(
-                        color: Pallete.gradient2,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignupPage()),
+                  );
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text: "Don't have an account? ",
+                    style: TextStyle(color: Pallete.subtitleText),
+                    children: [
+                      TextSpan(
+                        text: "Sign Up",
+                        style: TextStyle(
+                          color: Pallete.gradient2,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
