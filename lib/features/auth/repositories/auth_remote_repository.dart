@@ -4,6 +4,7 @@ import 'package:flutter_application_1/core/failure/failure.dart';
 import 'package:flutter_application_1/features/auth/model/user_model.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
+import '../../../core/constant/server_constant.dart';
 
 class AuthRemoteRepository {
   Future<Either<AppFailure, UserModel>> signup({
@@ -13,7 +14,7 @@ class AuthRemoteRepository {
   }) async {
     try {
       final response = await http.post(
-        Uri.parse('http://127.0.0.1:8000/auth/signup/'),
+        Uri.parse('${ServerConstant.serverUrl}/auth/signup/'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'name': name, 'email': email, 'password': password}),
       );
@@ -27,10 +28,13 @@ class AuthRemoteRepository {
     }
   }
 
-  Future<Either<AppFailure, UserModel>> login({required String email, required String password}) async {
+  Future<Either<AppFailure, UserModel>> login({
+    required String email,
+    required String password,
+  }) async {
     try {
       final response = await http.post(
-        Uri.parse('http://127.0.0.1:8000/auth/login/'),
+        Uri.parse('${ServerConstant.serverUrl}/auth/login/'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'email': email, 'password': password}),
       );
