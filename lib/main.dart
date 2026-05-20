@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/theme/theme.dart';
-import 'package:flutter_application_1/features/auth/view/pages/login_page.dart';
 import 'package:flutter_application_1/features/auth/view/pages/signup_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
