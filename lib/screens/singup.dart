@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ui_design_practice/screens/singup.dart';
+import 'package:ui_design_practice/screens/login.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
+class _SignupState extends State<Signup> {
   bool _obscurePassword = true;
+  bool _obscurePassword2 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _LoginState extends State<Login> {
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Image.asset(
-                  'assets/sign in.png',
+                  'assets/sign up.png',
                   width: double.infinity,
                   fit: BoxFit.fitWidth,
                 ),
@@ -39,14 +40,14 @@ class _LoginState extends State<Login> {
             Positioned(
               top:
                   MediaQuery.of(context).size.height *
-                  0.45, // responsive position
+                  0.30, // responsive position
               left: 24,
               right: 24,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Log In",
+                    "Sign Up",
                     style: GoogleFonts.poppins(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class _LoginState extends State<Login> {
                   const SizedBox(height: 8),
 
                   Text(
-                    "Welcome back!",
+                    "Create your account",
                     style: GoogleFonts.poppins(fontSize: 16),
                   ),
 
@@ -101,10 +102,37 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 24),
+                  TextField(
+                    obscureText: _obscurePassword2,
+                    decoration: InputDecoration(
+                      labelText: 'Confirm Password',
+                      border: UnderlineInputBorder(),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red, width: 2),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 2),
+                      ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword2
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword2 = !_obscurePassword2;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 40),
                   ElevatedButton(
                     onPressed: () {
-                      // Handle login logic here
+                      // Handle signup logic here
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
@@ -117,7 +145,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     child: Text(
-                      'Log In',
+                      'Sign Up',
                       style: GoogleFonts.poppins(
                         fontSize: 18,
                         color: Colors.white,
@@ -129,11 +157,11 @@ class _LoginState extends State<Login> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Signup()),
+                        MaterialPageRoute(builder: (context) => Login()),
                       );
                     },
                     child: Text(
-                      'Dont have an account? Sign Up',
+                      'Already have an account? Log In',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         color: Colors.grey[600],
