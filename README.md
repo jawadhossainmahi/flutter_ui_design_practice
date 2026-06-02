@@ -46,7 +46,7 @@ Below are sample screenshots showing the app UI design:
 
 | Welcome Screen | Login Screen | Signup Screen |
 |---|---|---|
-| ![Welcome Screen](assets/screenshots/welcome.png) | ![Login Screen](assets/screenshots/login.png) | ![Signup Screen](assets/screenshots/signup.png) |
+| ![Welcome Screen](assets/screenshots/welcome.png) | ![Login Screen](assets/screenshots/login.png) | ![Signup Screen](assets/screenshots/sign.png) |
 
 ## Resources
 
