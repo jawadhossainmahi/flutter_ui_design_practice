@@ -8,18 +8,27 @@ This repository contains a Flutter application focused on UI design practice. Fo
 
 ## Installation
 
-1. Install Flutter following the official guide: https://docs.flutter.dev/get-started/install
-2. Open a terminal and navigate to the project folder:
+### Prerequisites
+- Flutter SDK installed. [Install Flutter](https://docs.flutter.dev/get-started/install)
+- Git installed on your system
+- A connected device or simulator/emulator
+
+### Steps
+
+1. **Clone the repository:**
 
    ```bash
-   cd /home/jawadhossainmahi/programming/flutter_projects/ui_design/ui_design_practice
+   git clone https://github.com/jawadhossainmahi/flutter_ui_design_practice.git
+   cd flutter_ui_design_practice
    ```
-3. Get the project dependencies:
+
+2. **Get the project dependencies:**
 
    ```bash
    flutter pub get
    ```
-4. Run the app on a connected device or simulator:
+
+3. **Run the app on a connected device or simulator:**
 
    ```bash
    flutter run
@@ -33,13 +42,11 @@ This repository contains a Flutter application focused on UI design practice. Fo
 
 ## Screenshots
 
-Below are sample screenshots to show the app UI and help users understand the design.
+Below are sample screenshots showing the app UI design:
 
-![Welcome Screen](assets/screenshots/welcome.png)
-
-![Login Screen](assets/screenshots/login.png)
-
-![Signup Screen](assets/screenshots/signup.png)
+| Welcome Screen | Login Screen | Signup Screen |
+|---|---|---|
+| ![Welcome Screen](assets/screenshots/welcome.png) | ![Login Screen](assets/screenshots/login.png) | ![Signup Screen](assets/screenshots/signup.png) |
 
 ## Resources
 
@@ -47,6 +54,4 @@ Below are sample screenshots to show the app UI and help users understand the de
 - [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For help getting started with Flutter development, view the [online documentation](https://docs.flutter.dev/), which offers tutorials, samples, guidance on mobile development, and a full API reference.
